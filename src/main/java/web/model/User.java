@@ -1,8 +1,9 @@
-package model;
+package web.model;
 import javax.persistence.*;
 
-@Entity
 @Table(name = "users")
+
+@Entity
 public class User {
 
     @Id
@@ -48,5 +49,10 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "name='" + name + " " + surname + ", age=" + age + "\n";
     }
 }
