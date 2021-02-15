@@ -14,9 +14,9 @@ import java.util.List;
 @Controller
 public class UserController {
 
-    @GetMapping(value = "/users")
+    @GetMapping(value = "/")
     public String printUsers(Model model) {
-        List<User> user = new ArrayList<>();
+        List<User> user = new ArrayList<User>();
         user.add(new User("Anna", "Petrova", 23));
         user.add(new User("Oleg", "Ivanov", 21));
         model.addAttribute("user", user);

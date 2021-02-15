@@ -18,9 +18,10 @@ import java.util.Properties;
 
 @Configuration
 @ComponentScan(basePackages = "web")
-@PropertySource("classpath:db.properties")
-@EnableTransactionManagement
+//@PropertySource("classpath:db.properties")
+//@EnableTransactionManagement
 public class AppConfig {
+    /*
     @Autowired
     private Environment environment;
     @Bean
@@ -45,7 +46,7 @@ public class AppConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(){
         final LocalContainerEntityManagerFactoryBean emanager = new LocalContainerEntityManagerFactoryBean();
         emanager.setDataSource(getDataSource());
-        emanager.setPackagesToScan(environment.getRequiredProperty("db.entity"));
+        emanager.setPackagesToScan(environment.getRequiredProperty("web.model"));
         emanager.setJpaVendorAdapter( new HibernateJpaVendorAdapter() );
         emanager.setJpaProperties(hibernateProperties());
         return emanager;
@@ -62,4 +63,6 @@ public class AppConfig {
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation(){
         return new PersistenceExceptionTranslationPostProcessor();
     }
+
+     */
 }
