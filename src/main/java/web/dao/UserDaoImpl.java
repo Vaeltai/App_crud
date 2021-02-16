@@ -13,6 +13,11 @@ public class UserDaoImpl implements UserDao {
     @PersistenceContext
     private EntityManager em;
 
+    protected EntityManager getEntityManager(){
+        return this.em;
+    }
+
+    @Transactional
     @Override
     public void addUser(User user) {
         em.persist(user);
