@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import web.model.User;
+import web.service.UserService;
+import web.service.UserServiceImpl;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,14 +19,25 @@ public class UserController {
 
     @GetMapping(value = "/")
     public String printUsers(Model model) {
-        List<User> user = new ArrayList<User>();
-        user.add(new User("Anna", "Petrova", 23));
-        user.add(new User("Oleg", "Ivanov", 21));
+        UserService user = new UserServiceImpl();
+
+        user.addUser(new User("Anna", "Petrova", 23));
+        user.addUser(new User("Oleg", "Ivanov", 21));
+//        List<User> user = new ArrayList<User>();
+//        user.add(new User("Anna", "Petrova", 23));
+//        user.add(new User("Oleg", "Ivanov", 21));
         model.addAttribute("user", user);
         return "users";
     }
 
 
+//
+//    @GetMapping(value = "/users")
+//    public String getUsers(Model model){
+//
+//        model.addAttribute("users", user);
+//        return "users";
+//    }
 
 //
 //    @RequestMapping(value = "/users", method = RequestMethod.GET)
