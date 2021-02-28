@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
 @Transactional
 @Service
 public class UserServiceImpl implements UserService {
@@ -23,4 +24,8 @@ public class UserServiceImpl implements UserService {
         return userDao.getListUsers();
     }
 
+    @Override
+    public User show(int id) {
+        return userDao.show(id);
+    }
 }
