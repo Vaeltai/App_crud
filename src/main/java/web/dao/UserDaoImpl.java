@@ -17,8 +17,13 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void updateUser(User user) {
-//        em.
+    public void update(int id, User user) {
+        User userForUpdate = show(id);
+        userForUpdate.setName(user.getName());
+        userForUpdate.setSurname(user.getSurname());
+        userForUpdate.setAge(user.getAge());
+        em.refresh(userForUpdate);
+//        em.merge(userForUpdate);
     }
 
     @Override
@@ -29,7 +34,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void removeUser(User user) {
+    public void remove(User user) {
 
     }
 
@@ -38,4 +43,6 @@ public class UserDaoImpl implements UserDao {
         Query query = em.createNativeQuery("SELECT * FROM users where id=" + id, User.class);
         return (User) query.getResultList().get(0);
     }
+
+
 }

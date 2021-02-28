@@ -15,7 +15,6 @@ public class UserController {
     @Autowired
     public UserController(UserService userService){
         this.userService = userService;
-        System.out.println("example");
     }
 
     @GetMapping(value = "/new")
@@ -48,5 +47,17 @@ public class UserController {
     public String showUser (@PathVariable("id") int id, Model model){
         model.addAttribute("user", userService.show(id));
         return "/show";
+    }
+
+    @GetMapping("/{id}/edit")
+    public String edit(@PathVariable("id") int id, Model model){
+        model.addAttribute("user", userService.show(id));
+        return "/edit";
+    }
+
+    @PatchMapping("/{id}")
+    public String update(@ModelAttribute("user") User user, @PathVariable("id") int id){
+        userService.update(id, user);
+        return "redirect:/users";
     }
 }
