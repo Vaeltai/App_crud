@@ -50,7 +50,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}/edit")
-    public String edit(@PathVariable("id") int id, Model model){
+    public String edit(Model model, @PathVariable("id") int id){
         model.addAttribute("user", userService.show(id));
         return "/edit";
     }
