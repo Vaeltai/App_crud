@@ -22,7 +22,6 @@ public class UserDaoImpl implements UserDao {
         userForUpdate.setName(user.getName());
         userForUpdate.setSurname(user.getSurname());
         userForUpdate.setAge(user.getAge());
-        em.refresh(userForUpdate);
 //        em.merge(userForUpdate);
     }
 
@@ -34,8 +33,8 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void remove(User user) {
-
+    public void remove(int id) {
+        em.remove(show(id));
     }
 
     @Override

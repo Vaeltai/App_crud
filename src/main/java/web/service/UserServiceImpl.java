@@ -33,4 +33,9 @@ public class UserServiceImpl implements UserService {
     public void update(int id, User user){
         userDao.update(id, user);
     }
+
+    @Override
+    public void remove(int id) {
+        userDao.remove(id);
+    }
 }
