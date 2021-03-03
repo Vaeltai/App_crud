@@ -7,7 +7,7 @@ import java.util.List;
 public interface UserDao {
     List<User> getListUsers();
     void addUser(User user);
-    void update(int id, User user);
-    void remove(int id);
-    User show(int id);
+    void update(long id, User user);
+    void remove(long id);
+    User show(long id);
 }

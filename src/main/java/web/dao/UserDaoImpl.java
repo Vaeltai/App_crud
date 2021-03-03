@@ -17,31 +17,27 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void update(int id, User user) {
+    public void update(long id, User user) {
         User userForUpdate = show(id);
         userForUpdate.setName(user.getName());
         userForUpdate.setSurname(user.getSurname());
         userForUpdate.setAge(user.getAge());
-//        em.merge(userForUpdate);
     }
 
     @Override
     public List<User> getListUsers() {
-        String sql = "SELECT * FROM users";
-        Query query = em.createNativeQuery(sql, User.class);
+        String hql = "FROM User";
+        Query query = em.createQuery(hql, User.class);
         return query.getResultList();
     }
 
     @Override
-    public void remove(int id) {
+    public void remove(long id) {
         em.remove(show(id));
     }
 
     @Override
-    public User show(int id) {
-        Query query = em.createNativeQuery("SELECT * FROM users where id=" + id, User.class);
-        return (User) query.getResultList().get(0);
+    public User show(long id) {
+        return em.find(User.class, id);
     }
-
-
 }
